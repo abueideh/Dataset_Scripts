@@ -24,8 +24,8 @@ def generate_timestamps(args):
     video480_dir =  os.path.dirname(os.path.realpath(video_path))
     video720_dir = os.path.dirname(os.path.realpath(video480_dir)) + '\\v720\\'
 
-    times_dir = working_dir + '\\times\\'
-    partitions_dir = working_dir + '\\partitions\\'
+    times_dir = working_dir + '\\time_s\\'
+    partitions_dir = working_dir + '\\partition_s\\'
 
     cap = cv2.VideoCapture(video_path)
     count = 0
@@ -46,10 +46,9 @@ def generate_timestamps(args):
             new_face = False
             for (x, y, w, h) in faces:
                 if(first_face):
-					pass
-                    #width = w - 15
-                    #height = h - 15
-                    #face_size = min(width,height)
+                    pass
+                    width = w - 35
+                    face_size = max(width, face_size)
                     first_face = False
                     print(face_size)
                 if(w >face_size and h>face_size):
@@ -108,7 +107,7 @@ if __name__ == "__main__":
     working_dir = os.path.dirname(os.path.realpath(os.getcwd()))
     #working_dir = os.getcwd()
 
-    video_dir = working_dir + '\\videos\\' + part_name + '\\v480\\'
+    video_dir = working_dir + '\\video_s\\' + part_name + '\\v480\\'
 
     videos = [(video_dir+f,working_dir,face_size) for f in listdir(video_dir) if isfile(join(video_dir, f))]
 
@@ -126,11 +125,13 @@ if __name__ == "__main__":
     generate_timestamps(videos[0])
 
     generate_timestamps(videos[0])
+    
     D:\Abueideh\Testing
+    
     os.path.splitext(f)[0]
+    
     for s in videos:
         print(s)
-    
     
     Downloading playlist
     '''
